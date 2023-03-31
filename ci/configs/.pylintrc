@@ -1,0 +1,24 @@
+[MESSAGES CONTROL]
+
+# Enable the message, report, category or checker with the given id(s). You can
+# either give multiple identifier separated by comma (,) or put this option
+# multiple time.
+#enable=
+
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifier separated by comma (,) or put this option
+# multiple time (only on the command line, not in the configuration file where
+# it should appear only once).
+disable=C0325   # Ignoring extra parenthesis in code statements
+
+[FORMAT]
+
+max-line-length=200
+
+[DESIGN]
+
+# Maximum number of locals for function / method body
+max-locals=25
+
+# Maximum number of arguments for function / method
+max-args=10

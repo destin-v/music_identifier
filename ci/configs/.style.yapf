@@ -1,0 +1,9 @@
+[style]
+based_on_style = google
+column_limit = 100
+spaces_before_comment = 35, 50, 65, 80
+force_multiline_dict = true
+indent_closing_brackets = true
+split_before_first_argument = true
+split_before_named_assigns = true
+split_complex_comprehension = true
