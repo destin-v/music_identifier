@@ -76,7 +76,7 @@ class DatasetMusic(Dataset):
         """
 
         # Set path to source data
-        self.source_dir = "Part One Data/Part1(PS1)"
+        self.source_dir = "data/musicians"
 
         # Initialize variables
         self._df = pd.DataFrame
@@ -289,7 +289,7 @@ class DatasetMusicTest(Dataset):
         """Generate a dataframe that is used to test the data."""
 
         # Set path to source data
-        self.source_dir = "Part One Data/Part1(PS2)"
+        self.source_dir = "data/test"
 
         # Initialize variables
         self._df = pd.DataFrame

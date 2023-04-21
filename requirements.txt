@@ -2,3 +2,8 @@ midi2audio
 mido
 torch
 torchaudio
+tqdm
+numpy
+matplotlib
+pandas
+sklearn

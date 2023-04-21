@@ -14,7 +14,7 @@ def convert_labeled_data_to_wav():
 
     # Pathing of files
     abs_dir = os.getcwd()
-    source_dir = "Part One Data/Part1(PS1)"
+    source_dir = "data/musicians"
 
     # Create iterator for musician folders
     parent_folders = os.listdir(source_dir)
@@ -46,7 +46,7 @@ def convert_unlabled_data_to_wav():
 
     # Pathing of files
     abs_dir = os.getcwd()
-    source_dir = "Part One Data/Part1(PS2)"
+    source_dir = "data/test"
 
     # Create iterator for MIDI files
     midi_files = tqdm(glob(source_dir + "/*.mid"), colour="green")
@@ -67,4 +67,4 @@ if __name__ == "__main__":
     convert_unlabled_data_to_wav()
 
     # View Track Metadata
-    print_midi("Part One Data/Part1(PS2)/0.002716920481628_adj.mid")
+    print_midi("data/test/0.002716920481628_adj.mid")
