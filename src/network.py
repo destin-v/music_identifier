@@ -42,7 +42,6 @@ class AudioNetwork(nn.Module):
 
 
 if __name__ == "__main__":
-
     network = AudioNetwork()
     input = torch.ones(16, 2, 64, 2584, requires_grad=True)
     output = network(input)

@@ -30,10 +30,8 @@ def test_triplet_training():
 
     # Iterate over epochs
     for epoch_idx in range(0, 3):
-
         # Perform training
         for iter_idx in range(0, 3):
-
             optimizer.zero_grad()
 
             anchor__ = network(waveform_anc)
@@ -61,12 +59,8 @@ def triplet_training():
     dataset_valid = DatasetMusic(train=False, spectrogram=True)
 
     # Setup dataloaders
-    dataloader_train = DataLoader(
-        dataset_train, batch_size=16, num_workers=4, prefetch_factor=1
-    )
-    dataloader_valid = DataLoader(
-        dataset_valid, batch_size=16, num_workers=4, prefetch_factor=1
-    )
+    dataloader_train = DataLoader(dataset_train, batch_size=16, num_workers=4, prefetch_factor=1)
+    dataloader_valid = DataLoader(dataset_valid, batch_size=16, num_workers=4, prefetch_factor=1)
 
     # Configure the network
     network = AudioNetwork()
@@ -82,11 +76,9 @@ def triplet_training():
 
     # Iterate over epochs
     for epoch_idx in tqdm(range(0, 10), desc="Epoch", colour="green"):
-
         # Perform training
         network.train()
         for sample in tqdm(dataloader_train, desc="Iteration", colour="blue"):
-
             waveform_anc = sample[0]
             waveform_pos = sample[1]
             waveform_neg = sample[2]
@@ -108,7 +100,6 @@ def triplet_training():
         max_validation_loss = 100
         losses = []
         for sample in tqdm(dataloader_valid, desc="Validating", colour="red"):
-
             waveform_anc = sample[0]
             waveform_pos = sample[1]
             waveform_neg = sample[2]
@@ -131,7 +122,6 @@ def triplet_training():
 
 
 if __name__ == "__main__":
-
     # Test the pipeline
     # test_triplet_training()
 

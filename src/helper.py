@@ -13,7 +13,7 @@ if width < 10:
     matplotlib.rcParams["figure.figsize"] = [width * 2.5, height]
 
 
-def print_stats(waveform: torch.Tensor, sample_rate: int = None, src: str = None):
+def print_stats(waveform: torch.Tensor, sample_rate: int | None = None, src: str | None = None):
     """Prints out general stats.
 
     Args:
@@ -52,8 +52,8 @@ def plot_waveform(
     waveform: torch.Tensor,
     sample_rate: int,
     title: str = "Waveform",
-    xlim: int = None,
-    ylim: int = None,
+    xlim: int | None = None,
+    ylim: int | None = None,
 ):
     """_summary_
 
@@ -64,7 +64,7 @@ def plot_waveform(
         xlim (int, optional): Limits. Defaults to None.
         ylim (int, optional): Limits. Defaults to None.
     """
-    waveform = np.array(waveform)
+    waveform = waveform.numpy()
 
     num_channels, num_frames = waveform.shape
     time_axis = np.arange(0, num_frames) / sample_rate
@@ -89,7 +89,7 @@ def plot_specgram(
     waveform: torch.Tensor,
     sample_rate: int,
     title: str = "Spectrogram",
-    xlim: int = None,
+    xlim: int | None = None,
 ):
     """Plots the spectogram as 2 channels.
 
@@ -99,7 +99,7 @@ def plot_specgram(
         title (str, optional): Title. Defaults to "Spectrogram".
         xlim (int, optional): Limit. Defaults to None.
     """
-    waveform = np.array(waveform)
+    waveform = waveform.numpy()
 
     num_channels, num_frames = waveform.shape
 

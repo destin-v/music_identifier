@@ -111,7 +111,7 @@ The network architecture I used for this experiment is as follows:
 ```
 In order to test that my Triplet loss pipeline works I setup an example to quickly verify that the algorithm converges.  Using the example code, I am able to monitor that the loss goes from 1 to 0 given three different tensors that match the shape of my audio tensors.  This means that the pipeline works!
 
-```python 
+```python
 # Configure the network
 network = AudioNetwork()
 network.train()
