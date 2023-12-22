@@ -1,13 +1,13 @@
 # Example configuration for Black.
 
-# NOTE: you have to use single-quoted strings in TOML for regular expressions.
-# It's the equivalent of r-strings in Python.  Multiline strings are treated as
-# verbose regular expressions by Black.  Use [ ] to denote a significant space
-# character.
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
 [tool.black]
-line-length = 90
-target-version = ['py38']
+line-length = 100
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -32,3 +32,38 @@ exclude = '''
   | profiling
 )/
 '''
+
+[tool.poetry]
+name = "vs_codex"
+version = "0.1.0"
+description = ""
+authors = ["W. Li <william.li1@me.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "*"
+midi2audio = "*"
+mido = "*"
+numpy = "*"
+pandas = "*"
+scikit-learn = "*"
+torch = "2.1.0"
+torchaudio = "*"
+tqdm = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+coverage = "*"
+mypy = "*"
+nox = "*"
+pandas = "*"
+pdoc = "*"
+pre-commit = "*"
+pytest = "*"
+scalene = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
