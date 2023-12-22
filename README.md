@@ -17,18 +17,32 @@ The **challenge problem** is to identify musical compositions that your network 
 
 
 # 🛠️ Installation
-You will need [FluidSynth](https://github.com/FluidSynth/fluidsynth/wiki/Download) to run the code.
+In order to keep the repo small, all of the music files have been packaged as `midi` files.  These files are very small but cannot be played in audio format.  In order to convert the `midi` files to audio files you will need [**FluidSynth**](https://github.com/FluidSynth/fluidsynth/wiki/Download).
 
 ```console
 brew install fluidsynth
 poetry install
 ```
 
+Keep in mind that FluidSynth requires a [**SoundFont**](https://github.com/FluidSynth/fluidsynth/wiki/SoundFont) in order for it to work.  SoundFont is a file format for sample-based instrument sounds. You will need a SoundFont to use FluidSynth.  SoundFonts are large files and do not come prepackaged with FluidSynth.  For this project you can download a SoundFont from  from [**S. Christian Collins**](https://www.dropbox.com/s/dl/4x27l49kxcwamp5/GeneralUser_GS_1.471.zip).  The file will have to be placed in the fluidsynth path.
+
+```console
+mkdir -p /~/.fluidsynth/
+mkdir -p /usr/local/Cellar/fluid-synth/2.3.4/share/soundfonts/
+
+cp <downloaded soundfont.sf2> /usr/local/Cellar/fluid-synth/2.3.4/share/soundfonts/default.sf2
+cp <downloaded soundfont.sf2> ~/.fluidsynth/default_sound_font.sf2
+```
+
+**Note**: FluidSynth assumes that the SoundFont file in use is named `default.sf2`.  Make sure that when copying over the SoundFont, you name it appropriately.
+
 After installation you will need to convert the `.mid` files to `.wav` files in order for training to happen.  This requires you execute:
 
 ```console
 python src/preprocess.py
 ```
+
+You can verify that the audio data works by listening to one of the `.wav` files generated from the process.
 
 # 😎 Solution
 I decided to build a representation embedding of the data which can be used to identify the musical composition.  The basis of this approach comes from the Google [FaceNet](https://duckduckgo.com/?q=google+facenet+paper&t=osx) paper.  The paper describes how to build a facial recognition system to identify people.  However, it can also be used to identify audio data if properly modified.
@@ -233,6 +247,21 @@ When using this neural network to identify which tracks from the test dataset co
 The filenames with the highest minimum distances to our anchors are the ones more likely to be different from the music tracks I trained on.  This method does not definitively identify which music tracks are not from our list of artists, but it gives a metric we can use to gauge the similarity to our existing music tracks.
 
 # 🔧 Troubleshooting
+
+## Missing SoundFonts
+FluidSynth does not come with a SoundFonts by default.  But it needs one in order for it to work.  See discussion [**here**](https://github.com/FluidSynth/fluidsynth/issues/1005).
+
+
+## Panic Messages
+FluidSynth outputs a panic message when performing its conversion process.
+
+```console
+fluidsynth: panic: An error occurred while reading from stdin.
+```
+
+However, the audio files seem to convert properly without issues.  This error message can be safely ignored.
+
+## Corrupted Files
 Note that you will not able to convert 2 files from `.mid` to `.wav`:
 
     Violin Sonata No 7 in C minor_OP30NO2_2572_bevs7c

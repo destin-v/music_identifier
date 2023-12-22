@@ -5,6 +5,7 @@
 profile.html
 profile.json
 poetry.lock
+*.wav
 
 # Folders to ignore
 __pycache__
