@@ -11,11 +11,9 @@ from src.network import AudioNetwork
 
 
 def get_anchor_embeddings(network: torch.nn.Module, anchors_waveform: dict) -> dict:
-
     # Get the embeddings for each anchor
     anchors_embedding = {}
     for name, waveform in anchors_waveform.items():
-
         # Perform inferencing to get the embedding
         with torch.no_grad():
             output = network(waveform.unsqueeze(0))
@@ -25,7 +23,6 @@ def get_anchor_embeddings(network: torch.nn.Module, anchors_waveform: dict) -> d
 
 
 def plot_confusion_matrix():
-
     # Variables
     model_save_path = "save/audio_network.pkl"
 
@@ -45,7 +42,6 @@ def plot_confusion_matrix():
     y_pred = []
 
     for sample in tqdm(dataloader_valid, desc="Validating", colour="red"):
-
         # Waveforms
         waveform_pos = sample[1]
 
@@ -59,7 +55,6 @@ def plot_confusion_matrix():
         association = None
         max_dist = 1000
         for key, val in anchors_embedding.items():
-
             # We are going to use Euclidean distance to figure out what to associate the embedding with
             dist = np.linalg.norm(prediction.detach().numpy() - val)
             if dist < max_dist:
@@ -84,7 +79,6 @@ def plot_confusion_matrix():
 
 
 def infer_test_data():
-
     # Variables
     model_save_path = "save/audio_network.pkl"
 
@@ -107,7 +101,6 @@ def infer_test_data():
     distances = []
 
     for sample in tqdm(dataloader_test, desc="Validating", colour="red"):
-
         # Waveforms
         waveform = sample[0]
         filename = sample[1][0]
@@ -118,7 +111,6 @@ def infer_test_data():
         # Need to compare the prediction versus all anchors
         min_dist = 1000
         for key, val in anchors_embedding.items():
-
             # We are going to use Euclidean distance to figure out what to associate the embedding with
             dist = np.linalg.norm(prediction.detach().numpy() - val)
             if dist < min_dist:
@@ -135,6 +127,5 @@ def infer_test_data():
 
 
 if __name__ == "__main__":
-
     plot_confusion_matrix()
     # infer_test_data()

@@ -113,13 +113,10 @@ class DatasetMusic(Dataset):
                 continue  # this is a MacOSX generated file
 
             # Create iterator for MIDI files
-            wav_files_path = tqdm(
-                glob(self.source_dir + "/" + label + "/*.wav"), colour="red"
-            )
+            wav_files_path = tqdm(glob(self.source_dir + "/" + label + "/*.wav"), colour="red")
 
             # Iterate over all files under musician folders
             for ii, wav_file_path in enumerate(wav_files_path):
-
                 # Create a flag for train/validation
                 prob = random.random()
                 if ii == 1:
@@ -232,7 +229,6 @@ class DatasetMusic(Dataset):
         df_anc = self._df[self._df["anchor"]]
 
         for ii, row in df_anc.iterrows():
-
             # Extract row information
             anc_path_ = row["wav_file_path"]
             anc_label = row["label"]
@@ -252,13 +248,10 @@ class DatasetMusic(Dataset):
         return my_dict
 
     def resample(self, waveform: torch.Tensor, sample_rate: int, path: str):
-
         # Conversion to 44.1kHz if not already
         if sample_rate != self._new_sample_rate:
             # Resample the data to match 44.1kHz sampling rate
-            waveform = torchaudio.transforms.Resample(sample_rate, self._new_sample_rate)(
-                waveform
-            )
+            waveform = torchaudio.transforms.Resample(sample_rate, self._new_sample_rate)(waveform)
             print(f"Waveform Resampled: {path}")
 
         # Crop out 30 seconds of data randomly from the music file
@@ -303,7 +296,6 @@ class DatasetMusicTest(Dataset):
             self.generate_df()
 
     def generate_df(self):
-
         data = []
 
         # Create iterator for MIDI files
@@ -352,13 +344,10 @@ class DatasetMusicTest(Dataset):
         return len(self._df)
 
     def resample(self, waveform: torch.Tensor, sample_rate: int, path: str):
-
         # Conversion to 44.1kHz if not already
         if sample_rate != self._new_sample_rate:
             # Resample the data to match 44.1kHz sampling rate
-            waveform = torchaudio.transforms.Resample(sample_rate, self._new_sample_rate)(
-                waveform
-            )
+            waveform = torchaudio.transforms.Resample(sample_rate, self._new_sample_rate)(waveform)
             print(f"Waveform Resampled: {path}")
 
         # Crop out 30 seconds of data randomly from the music file
@@ -376,7 +365,6 @@ class DatasetMusicTest(Dataset):
 
 
 if __name__ == "__main__":
-
     # Setup training/validation dataset
     dataset_music_train = DatasetMusic(train=True)
     dataset_music_valid = DatasetMusic(train=False)

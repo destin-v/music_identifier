@@ -61,7 +61,6 @@ def convert_unlabled_data_to_wav():
 
 # using the default sound font in 44100 Hz sample rate
 if __name__ == "__main__":
-
     # First convert all MIDI files to WAV format
     convert_labeled_data_to_wav()
     convert_unlabled_data_to_wav()

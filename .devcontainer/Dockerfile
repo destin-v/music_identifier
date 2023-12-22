@@ -1,34 +1,31 @@
-#--------------------------------------------------------------
-# Name:     Anaconda Environment
-# Author:   Destin V
-# Date:     1/6/2021
+#===================================================================================================
 #
-# Description:
-#   Comes packaged with Anaconda along with basic
-#   development tools.  This is a base development
-#   image designed for rapid prototyping and
-#   experimentation.  GPU support is provided.
+#   DESCRIPTION:  Development Docker Container.  Installs the following:
+#                 * miniconda
+#                 * Oh-My-Zsh
+#                 * awesome-vim
 #
-# Note:
-#   In order to get GPU support the nvidia image's
-#   CUDA version must match the version on the host
-#   computer.
+#   GPU SUPPORT:  In order to get GPU support the nvidia image's CUDA version must match the
+#                 version on the host computer.
 #
-#   If rendering to the screen is required then
-#   execute the following prior to starting the
-#   container:
-#   > xhost +local:root
+#     RENDERING:  If rendering to the screen is required then execute the following prior to
+#                 starting the container:
 #
-#--------------------------------------------------------------
+#                 ```console
+#                 xhost +local:root
+#                 ```
+#
+#        AUTHOR:  W. Li
+#       VERSION:  1.0
+#       CREATED:  12/15/2023
+#===================================================================================================
 
 # Source Image (this should match the CUDA version on the host)
-# FROM nvidia/cuda:10.2-base-ubuntu18.04
 FROM nvidia/cuda:11.4.1-base-ubuntu20.04
 
 # Labels
-LABEL maintainer="Destin V"
 LABEL version="1.0"
-LABEL description="Basic Anaconda development image"
+LABEL description="Miniconda Dev Image"
 
 # Expose ports here
 # EXPOSE 8080
@@ -61,12 +58,16 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 
 # Source python versions: https://repo.anaconda.com/miniconda/
 RUN wget \
-    https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
+    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
-    && bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b \
-    && rm -f Miniconda3-py38_4.10.3-Linux-x86_64.sh
+    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+    && rm -f Miniconda3-latest-Linux-x86_64.sh
 
 RUN conda init zsh
+
+# Setup Vim-Awesome
+RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime \
+    && sh ~/.vim_runtime/install_basic_vimrc.sh
 
 # Setup working directory
 WORKDIR /projects
@@ -74,9 +75,6 @@ WORKDIR /projects
 # Copy folder/files into container (must be within context directory)
 # Process: local files -> artifact dir -> container dir
 # COPY <local_path> <container_path>
-
-# Dependencies
-RUN pip install pre-commit
 
 # Environment
 ENV SHELL /bin/zsh

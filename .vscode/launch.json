@@ -7,11 +7,16 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "__cwd__": "${fileDirname}",
             "cwd": "${workspaceFolder}",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}"
             }
+        },
+        {
+            "name": "Debug Unit Test",
+            "type": "python",
+            "request": "test",
+            "justMyCode": false,
         }
     ]
 }
