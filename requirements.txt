@@ -1,9 +1,0 @@
-matplotlib
-midi2audio
-mido
-numpy
-pandas
-sklearn
-torch
-torchaudio
-tqdm
