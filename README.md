@@ -17,9 +17,17 @@ The **challenge problem** is to identify musical compositions that your network 
 
 
 # 🛠️ Installation
-To install the repo:
+You will need [FluidSynth](https://github.com/FluidSynth/fluidsynth/wiki/Download) to run the code.
+
 ```console
+brew install fluidsynth
 poetry install
+```
+
+After installation you will need to convert the `.mid` files to `.wav` files in order for training to happen.  This requires you execute:
+
+```console
+python src/preprocess.py
 ```
 
 # 😎 Solution
@@ -225,14 +233,6 @@ When using this neural network to identify which tracks from the test dataset co
 The filenames with the highest minimum distances to our anchors are the ones more likely to be different from the music tracks I trained on.  This method does not definitively identify which music tracks are not from our list of artists, but it gives a metric we can use to gauge the similarity to our existing music tracks.
 
 # 🔧 Troubleshooting
-
-## Installing FluidSynth
-You will need [FluidSynth](https://github.com/FluidSynth/fluidsynth/wiki/Download) to run the code.
-
-```console
-brew install fluidsynth
-```
-
 Note that you will not able to convert 2 files from `.mid` to `.wav`:
 
     Violin Sonata No 7 in C minor_OP30NO2_2572_bevs7c
