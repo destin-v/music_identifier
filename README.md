@@ -1,8 +1,7 @@
 <figure>
     <p align="center">
-    <img src="docs/pics/logo.gif" alt="drawing" width="600"/>
+    <img src="https://drive.google.com/uc?export=view&id=1yFte-RASCcF1ahkYg1Jybavi-gWje8kp" alt="drawing" width="600"/>
     </p>
-  <figcaption align = "center"></figcaption>
 </figure>
 
 # 📒 Description
@@ -58,15 +57,17 @@ I decided to transform the audio data from the time vs. amplitude domain into th
     <p align="center">
     <img src="docs/pics/time_vs_amp.png" alt="drawing" width="1200"/>
     </p>
-  <figcaption align = "center"></figcaption>
 </figure>
 
 <figure>
     <p align="center">
     <img src="docs/pics/time_vs_freq.png" alt="drawing" width="1200"/>
     </p>
-  <figcaption align = "center"></figcaption>
 </figure>
+
+<p align="center">
+<b>Fig 1 - Visualizing the data.</b>
+</p>
 
 The spectrogram that we created can be converted into a tensor which can be processed by a Convolutional Neural Network (CNN).  This allows us to treat the audio data more like image data which allows us to utilize our computer vision tools.  Additionally, this format is easier to work with than raw audio data because we don't have to represent the data at 44100 Hz.
 
@@ -182,22 +183,37 @@ output loss=0.0
 Here is a visual representation of how the Triplet loss separates clusters of data in the feature space during training.  We have 4 anchors which represent the four musicians.  When training finishes, the anchors will be positioned close to their positive (i.e. matching embeddings).
 
 <figure>
-<img title="Triplet Loss Diagram" src="docs/pics/triplet_loss.png">
-<figcaption align = "center"><b>Fig: Triplet Loss Diagram</b></figcaption>
+    <p align="center">
+    <img title="Triplet Loss Diagram" src="docs/pics/triplet_loss.png">
+    </p>
 </figure>
+
+<p align="center">
+<b>Fig 2: Triplet Loss Diagram</b>
+</p>
 
 
 When training this network on the actual music data I get a validation loss of approximately **0.39**.  Meaning that it was not able to completely separate the music into distinct categories in the feature space.  When we plot the confusion matrix across the categories we get:
 
 <figure>
-<img title="Confusion Matrix" src="docs/pics/confusion_matrix_train.png">
-<figcaption align = "center"><b>Fig.1 - This is the confusion matrix on the training data.</b></figcaption>
+    <p align="center">
+    <img title="Confusion Matrix" src="docs/pics/confusion_matrix_train.png">
+    </p>
 </figure>
 
+<p align="center">
+<b>Fig 3 - This is the confusion matrix on the training data.</b>
+</p>
+
 <figure>
-<img title="Confusion Matrix" src="docs/pics/confusion_matrix_valid.png">
-<figcaption align = "center"><b>Fig.2 - This is the confusion matrix on the validation data.</b></figcaption>
+    <p align="center">
+    <img title="Confusion Matrix" src="docs/pics/confusion_matrix_valid.png">
+    </p>
 </figure>
+
+<p align="center">
+<b>Fig 4 - This is the confusion matrix on the validation data.</b>
+</p>
 
 From this we can tell that our neural network is struggling on identifying Brahms' music.  We also see that Brahms' music gets classified as Bach a lot.  This was trained without a GPU, so the neural network architecture is not very sophisticated.  But in general, it looks like it is working.
 
@@ -268,3 +284,6 @@ Note that you will not able to convert 2 files from `.mid` to `.wav`:
     Violin Sonata No 7 in C minor_OP30NO2_2573_bevs7d
 
 It is possible that these files are corrupt or there is some other issue with FluidSynth's conversion process.
+
+# References
+* Schroff, F., Kalenichenko, D., & Philbin, J. (2015). FaceNet: A unified embedding for face recognition and clustering. ArXiv. https://doi.org/10.1109/cvpr.2015.7298682
