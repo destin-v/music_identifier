@@ -1,16 +1,25 @@
-<figure>
-    <p align="center">
-    <img src="https://drive.google.com/uc?export=view&id=1yFte-RASCcF1ahkYg1Jybavi-gWje8kp" alt="drawing" width="600"/>
-    </p>
-</figure>
+<p align="center">
+  <a href="https://github.com/destin-v">
+    <img src="https://drive.google.com/uc?export=view&id=1yFte-RASCcF1ahkYg1Jybavi-gWje8kp" alt="drawing" width="500"/>
+  </a>
+</p>
 
 # 📒 Description
-<figure>
-    <p align="center">
-    <img src="docs/pics/program_logo.png" alt="drawing" width="300"/>
-    </p>
-  <figcaption align = "center"></figcaption>
-</figure>
+<p align="center">
+  <img src="docs/pics/program_logo.png" alt="drawing" width="300"/>
+</p>
+
+<p align="center">
+  <a href="https://devguide.python.org/versions/">              <img alt="" src="https://img.shields.io/badge/python-^3.10-blue?logo=python&logoColor=white"></a>
+  <a href="https://docs.github.com/en/actions/quickstart">      <img alt="" src="https://img.shields.io/badge/CI-github-blue?logo=github&logoColor=white"></a>
+  <a href="https://black.readthedocs.io/en/stable/index.html">  <img alt="" src="https://img.shields.io/badge/code%20style-black-blue"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/destin-v/music_identifier/actions/workflows/pre-commit.yml">  <img alt="pre-commit" src="https://github.com/destin-v/music_identifier/actions/workflows/pre-commit.yml/badge.svg"></a>
+  <a href="https://destin-v.github.io/music_identifier/src.html">                           <img alt="pdoc" src="https://github.com/destin-v/music_identifier/actions/workflows/pdoc.yml/badge.svg"></a>
+  <a href="https://github.com/destin-v/music_identifier/actions/workflows/pytest.yml">      <img alt="pytest" src="https://github.com/destin-v/music_identifier/actions/workflows/pytest.yml/badge.svg"></a>
+</p>
 
 The **challenge problem** is to identify musical compositions that your network has never trained on.  You are given a set of musical compositions and names of the artists that composed them.  But you will be evaluated on musical compositions that were not availble during training.  Some of the evaluation music compositions will be from artists that you have trained on.  However, there will be some evaluation music compositions that are from **new artists**.  Your goal is to identify all of them as best as possible.
 
