@@ -34,7 +34,7 @@ exclude = '''
 '''
 
 [tool.poetry]
-name = "vs_codex"
+name = "music_identifier"
 version = "0.1.0"
 description = ""
 authors = ["W. Li <william.li1@me.com>"]
